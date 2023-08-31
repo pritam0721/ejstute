@@ -33,17 +33,25 @@ app.post("/",(req,res)=>{
  
   item = req.body.newItem;
 
-  listofItems.push(item);
+  let pageList = req.body.list ;
+ 
+    if(pageList ==="Work"){
+      workitems.push(item);
+       res.redirect("/work");
+     }else{
+      listofItems.push(item);
+      res.redirect("/");
+
+    }
 
 
 
-  res.redirect("/");
+
+  
 })
 
 app.get("/work",(req,res) =>{
-   let itemWork = req.body.newItem;
-   workitems.push(itemWork);
-   res.render('list',{listTitel:"Work List", newlistItems : workitems})
+  res.render('list',{listTitel:"Work List", newlistItems : workitems})
 })
 
 
