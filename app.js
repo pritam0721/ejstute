@@ -10,18 +10,18 @@ app.set("view engine","ejs");
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-var item = "";
+let item = "";
 
-var listofItems = ["Buy food","cook food","Eat food"]
-var workitems  = []
+let listofItems = ["Buy food","cook food","Eat food"]
+let workitems  = []
 app.get("/",function(req,res){
   
-    var today = new Date();
-    var currentday = today.getDay();
+    let today = new Date();
+    let currentday = today.getDay();
   
-    var options = { weekday: 'long',  month: 'long', day: 'numeric' };
+    let options = { weekday: 'long',  month: 'long', day: 'numeric' };
 
-      var day = ""+ today.toLocaleDateString("en-US",options) ;
+      let day = ""+ today.toLocaleDateString("en-US",options) ;
 
  
 
@@ -30,7 +30,7 @@ app.get("/",function(req,res){
 })
 
 app.post("/",(req,res)=>{
-    console.log(req.body);
+ 
   item = req.body.newItem;
 
   listofItems.push(item);
@@ -41,7 +41,7 @@ app.post("/",(req,res)=>{
 })
 
 app.get("/work",(req,res) =>{
-   var itemWork = req.body.newItem;
+   let itemWork = req.body.newItem;
    workitems.push(itemWork);
    res.render('list',{listTitel:"Work List", newlistItems : workitems})
 })
