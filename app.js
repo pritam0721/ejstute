@@ -54,7 +54,9 @@ app.get("/work",(req,res) =>{
   res.render('list',{listTitel:"Work List", newlistItems : workitems})
 })
 
-
+app.get("/about",(req,res)=>{
+    res.render('about');
+})
 
 
 
